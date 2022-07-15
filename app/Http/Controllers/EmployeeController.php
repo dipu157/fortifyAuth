@@ -23,6 +23,8 @@ class EmployeeController extends Controller
     		'avatar' => $filename,
     	];
 
+        // dd($empData);
+
     	Employee::create($empData);
     	return response()->json([
     		'status' => 200

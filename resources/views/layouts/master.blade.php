@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
-        <title>Admin Template</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- morris CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="{{ asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <!-- You can change the theme colors from here -->
-        <link href="{{ asset('css/colors/blue.css') }}" rel="stylesheet">
-        <link href="{{ asset('plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('plugins/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('plugins/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('plugins/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
-        
-        <script src="{{ asset('plugins/jquery/jquery.min.js') }} "></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-        <link href="{{ asset('plugins/multiselect/css/multi-select.css') }} " rel="stylesheet" type="text/css" />
-        <link href="{{ asset('plugins/calendar/dist/fullcalendar.css') }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.css" />
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        
-        <style>
-        .notify {
-        position: relative;
-        top: -12px;
-        right: -9px;
-        }
-        </style>
-    </head>
+@include('layouts.partials.header')
     <body class="fix-header fix-sidebar card-no-border">
         <div class="preloader">
             <svg class="circular" viewBox="25 25 50 50">
@@ -137,48 +95,7 @@
                             </div>
                 </nav>
             </header>
-                    <{{-- div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Reset Your Password</h4>
-
-                                    @if(session()->has('success'))
-                                    <strong class="text-success">{{ session()->get('success') }}</strong>
-                                    @endif
-
-                                    @if(session()->has('error'))
-                                    <strong class="text-danger">{{ session()->get('error') }}</strong>
-                                    @endif
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                </div>
-                                <form action="{{ route('update.password') }}" method="post">
-                                    @csrf
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="new-password" class="control-label">Current Password</label>
-                                            <input type="password" name="current_password" class="form-control" id="new-current_password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="new-password" class="control-label">New Password</label>
-                                            <input type="password" name="password" class="form-control" id="new-password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="confirm-password" class="control-label">Confirm Password</label>
-                                            <input type="password" name="confirm_password" class="form-control" id="confirm-password">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger waves-effect waves-light">Save changes</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> --}}
-
+                    
             <!-- Sidebar Start  --> 
                 <aside class="left-sidebar">
                         <!-- Sidebar scroll-->
@@ -191,6 +108,8 @@
                                     <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">CRUD </span></a>
                                     <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('crud.manage') }}">Manage CRUD </a></li>
+
+                                        <li><a href="{{ route('departmentIndex') }}">Department CRUD </a></li>
                                     </ul>
                                 </li>
                                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-building-o"></i><span class="hide-menu"> Inventory </span></a>
@@ -223,50 +142,5 @@
             <!---- Footer Start --->
         </div>
     </body>
-<!-- All Jquery -->
-<!-- Bootstrap tether Core JavaScript -->
-        <script src="{{ asset('plugins/moment/moment.js') }}"></script>
-        <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script>
-        <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-        <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
-        <!--Wave Effects -->
-        <script src="{{ asset('js/waves.js') }} "></script>
-        <!--Menu sidebar -->
-        <script src="{{ asset('js/sidebarmenu.js') }}"></script>
-        <!--stickey kit -->
-        <script src="{{ asset('plugins/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
-        <!--Custom JavaScript -->
-        <script src="{{ asset('js/custom.min.js') }}"></script>
-        <script src="{{ asset('js/jquery.PrintArea.js') }}"></script>
 
-        <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-        <!--morris JavaScript -->
-        <script src="{{ asset('plugins/raphael/raphael-min.js') }}"></script>
-        <script src="{{ asset('plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
-        <!-- Editable -->
-        <script src="{{ asset('plugins/jsgrid/db.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('plugins/jsgrid/dist/jsgrid.min.js') }}"></script>
-        <!-- This is data table -->
-        <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-        <!-- start - This is for export functionality only -->
-        <script src="{{ asset('export/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('export/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js') }}"></script>
-        <script src="{{ asset('export/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js') }}"></script>
-        <script src="{{ asset('export/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script src="{{ asset('plugins/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript"></script>
-
-        <script src="{{ asset('plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-        <script src="{{ asset('export/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js') }}"></script>
-        <script src="{{ asset('export/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('export/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js') }} "></script>
-        <script src="{{ asset('js/main.js') }}"></script>
-
-        <script src="{{ asset('plugins/chartist-js/dist/chartist.min.js') }} "></script>
-        <script src="{{ asset('plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }} "></script>
-        <script src="{{ asset('js/dashboard3.js') }} "></script>
-        <script src="{{ asset('plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
-</html>
+    @include('layouts.partials.footer')

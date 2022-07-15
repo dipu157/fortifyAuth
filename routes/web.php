@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\RolesController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,8 @@ Route::view('home','dashboard')->middleware('auth');
 
 Route::get('/home', function () { return view('dashboard'); })->name('dashboard')->middleware('auth');
  
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request){
     $request->fulfill();
- 
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -36,8 +37,11 @@ Route::get('/reset-password/{token}', function ($token) {
     return view('auth.passwords.reset', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
-Route::get('/password/edit', [HomeController::class, 'changePassword'])->name('change.password');
-Route::post('/password/update', [HomeController::class, 'updatePassword'])->name('update.password');
+Route::get('/password/edit', [HomeController::class, 'index'])->name('change.password');
+Route::post('/updatePass', [HomeController::class, 'updatePassword'])->name('updatePass');
+
+Route::get('/department/Index', [DepartmentController::class, 'index'])->name('departmentIndex');
+Route::post('/add/department', [DepartmentController::class, 'store'])->name('add_Department');
 
 Route::get('/crud', function () { return view('crud.employeeIndex'); })->name('crud.manage')->middleware('verified');
 Route::post('/store', [EmployeeController::class, 'store'])->name('store');
@@ -45,3 +49,7 @@ Route::get('/fetchAll', [EmployeeController::class, 'fetchAll'])->name('fetchAll
 Route::get('/edit', [EmployeeController::class, 'edit'])->name('edit');
 Route::delete('/delete', [EmployeeController::class, 'delete'])->name('delete');
 Route::post('/update', [EmployeeController::class, 'update'])->name('update');
+
+
+Route::get('roles',[RolesController::class,'index']);
+Route::get('permission',[RolesController::class,'permissionIndex']);
